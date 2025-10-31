@@ -1,0 +1,14 @@
+
+## Compilación y ejecución
+
+### Requisitos
+- CMake 3.10 o superior
+- Compilador C++17
+
+### Compilar con CMake
+```bash
+mkdir build
+cd build
+cmake ..
+make
+./tienda_online
