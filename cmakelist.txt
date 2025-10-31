@@ -1,0 +1,30 @@
+cmake_minimum_required(VERSION 3.10)
+project(TiendaOnline)
+
+# Configurar versión de C++
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Incluir directorios
+include_directories(include)
+
+# Archivos fuente
+set(SOURCES
+    src/Producto.cpp
+    src/main.cpp
+)
+
+# Crear ejecutable
+add_executable(tienda_online ${SOURCES})
+
+# Configuraciones para Doxygen
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+    configure_file(Doxyfile.in Doxyfile @ONLY)
+    add_custom_target(docs
+        COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Generando documentación con Doxygen"
+        VERBATIM
+    )
+endif()
